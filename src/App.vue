@@ -1,6 +1,7 @@
 <template>
-  <button type="button" @click="flag = !flag">Toggle</button>
+  <!-- <button type="button" @click="flag = !flag">Toggle</button> -->
 
+  <button type="button" @click="AddItem">Add Item</button>
   <!-- <Transition name="fade" mode="out-in">
     <h2 v-if="flag" key="main">Hello World!</h2>
     <h2 v-else key="secondary">another Hello!</h2>
@@ -10,7 +11,7 @@
     <h2 v-if="flag">hello</h2>
   </transition> -->
 
-  <transition
+  <!-- <transition
     @before-enter="BeforeEnter"
     @enter="Enter"
     @after-enter="AfterEnter"
@@ -21,7 +22,19 @@
     name="fade"
   >
     <h2 v-if="flag">Hey</h2>
-  </transition>
+  </transition> -->
+
+  <ul>
+    <transition-group name="fade">
+      <li
+        v-for="(number, index) in numbers"
+        :key="number"
+        @click="removeItem(index)"
+      >
+        {{ number }}
+      </li>
+    </transition-group>
+  </ul>
 </template>
 
 <script>
@@ -30,9 +43,18 @@ export default {
   data() {
     return {
       flag: false,
+      numbers: [1, 2, 3, 4, 5],
     };
   },
   methods: {
+    AddItem() {
+      const number = Math.floor(Math.random() * 100 + 1);
+      const index = Math.floor(Math.random() * this.numbers.length);
+      this.numbers.splice(index, 0, number);
+    },
+    removeItem() {
+      this.numbers.splice(index, 1);
+    },
     BeforeEnter(element) {
       console.log("before-enter ", element);
     },
@@ -77,6 +99,11 @@ export default {
 </script>
 
 <style>
+li {
+  font-size: 22px;
+  cursor: pointer;
+}
+
 h2 {
   width: 400px;
   padding: 20px;
@@ -103,7 +130,7 @@ h2 {
 
 .fade-enter-active {
   transition: all 1s;
-  background-color: chartreuse;
+  color: chartreuse;
 }
 
 .fade-leave-to {
