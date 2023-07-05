@@ -6,8 +6,19 @@
     <h2 v-else key="secondary">another Hello!</h2>
   </Transition> -->
 
-  <transition name="zoom" type="animation" appear>
+  <!-- <transition name="zoom" type="animation" appear>
     <h2 v-if="flag">hello</h2>
+  </transition> -->
+
+  <transition
+    @before-enter="BeforeEnter"
+    @enter="Enter"
+    @after-enter="AfterEnter"
+    @before-leave="BeforeLeave"
+    @leave="Leave"
+    @after-leave="AfterLeave"
+  >
+    <h2 v-if="flag">Hey</h2>
   </transition>
 </template>
 
@@ -16,8 +27,30 @@ export default {
   name: "App",
   data() {
     return {
-      flag: true,
+      flag: false,
     };
+  },
+  methods: {
+    BeforeEnter(element) {
+      console.log("before-enter ", element);
+    },
+    Enter(element, done) {
+      console.log("enter", element);
+      done();
+    },
+    AfterEnter(element) {
+      console.log("after-enter", element);
+    },
+    BeforeLeave(element) {
+      console.log("before-leave", element);
+    },
+    Leave(element, done) {
+      console.log("leave", element);
+      done();
+    },
+    AfterLeave(element) {
+      console.log("after-leave", element);
+    },
   },
 };
 </script>
@@ -65,7 +98,6 @@ h2 {
 .zoom-leave-active {
   animation: zoom-out 1s linear forwards;
   transition: all 2s linear;
-
 }
 
 @keyframes zoom-in {
