@@ -25,7 +25,11 @@
   </transition> -->
 
   <ul>
-    <transition-group name="fade">
+    <transition-group
+      name="fade"
+      enter-active-class="animate__animated animate__shakeX"
+      leave-active-class="animate__animated animate__shakeX"
+    >
       <li
         v-for="(number, index) in numbers"
         :key="number"
@@ -99,6 +103,14 @@ export default {
 </script>
 
 <style>
+.animate__flipOutx {
+  position: absolute;
+}
+
+.animate__animated {
+  animation-duration: 1.5s;
+}
+
 li {
   font-size: 22px;
   cursor: pointer;
