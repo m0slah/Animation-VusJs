@@ -52,7 +52,7 @@ export default {
       const index = Math.floor(Math.random() * this.numbers.length);
       this.numbers.splice(index, 0, number);
     },
-    removeItem() {
+    removeItem(index) {
       this.numbers.splice(index, 1);
     },
     BeforeEnter(element) {
@@ -136,7 +136,7 @@ h2 {
 .fade-leave-to {
   transition: all 1s linear;
   opacity: 1;
-  background-color: orange;
+  color: red;
 }
 
 .zoom-enter-active {
