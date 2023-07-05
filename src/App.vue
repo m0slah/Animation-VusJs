@@ -120,7 +120,7 @@ h2 {
 
 .fade-enter-to {
   transition: all 1s linear;
-  color: red;
+  color: chartreuse;
 }
 
 .fade-leave-form {
@@ -128,15 +128,19 @@ h2 {
   background-color: aquamarine;
 }
 
-.fade-enter-active {
-  transition: all 1s;
-  color: chartreuse;
+.fade-leave-active {
+  transition: all 2s;
+  position: absolute;
 }
 
 .fade-leave-to {
   transition: all 1s linear;
   opacity: 1;
   color: red;
+}
+
+.fade-move {
+  transition: all 1s linear;
 }
 
 .zoom-enter-active {
