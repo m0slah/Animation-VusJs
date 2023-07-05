@@ -34,20 +34,39 @@ export default {
     BeforeEnter(element) {
       console.log("before-enter ", element);
     },
+
     Enter(element, done) {
       console.log("enter", element);
-      done();
+
+      const animation = element.animate([{}, { transform: "scale3d(0,0,0)" }], {
+        duration: 1000,
+      });
+
+      animation.onfinish = () => {
+        done();
+      };
     },
+
     AfterEnter(element) {
       console.log("after-enter", element);
     },
+
     BeforeLeave(element) {
       console.log("before-leave", element);
     },
+
     Leave(element, done) {
       console.log("leave", element);
-      done();
+
+      const animation = element.animate([{ transform: "scale3d(0,0,0)" }, {}], {
+        duration: 1000,
+      });
+
+      animation.onfinish = () => {
+        done();
+      };
     },
+
     AfterLeave(element) {
       console.log("after-leave", element);
     },
