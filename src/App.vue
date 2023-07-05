@@ -17,6 +17,8 @@
     @before-leave="BeforeLeave"
     @leave="Leave"
     @after-leave="AfterLeave"
+    :css="true"
+    name="fade"
   >
     <h2 v-if="flag">Hey</h2>
   </transition>
@@ -106,7 +108,8 @@ h2 {
 
 .fade-leave-to {
   transition: all 1s linear;
-  opacity: 0;
+  opacity: 1;
+  background-color: orange;
 }
 
 .zoom-enter-active {
